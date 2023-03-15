@@ -13,7 +13,20 @@ branches:
     is-release-branch: true
     is-mainline: true
     pre-release-weight: 55000
-  
+  feature:
+    regex: ^feature?[/-]
+    source-branches: 
+      - main
+      - master
+    tag: {BranchName}
+    increment: Minor
+  fix:
+    regex: bugfix(es)?[/-]
+    source-branches:
+      - main
+      - master
+    tag: {BranchName}
+    increment: Patch
 ignore:
   sha: []
 merge-message-formats: {}
