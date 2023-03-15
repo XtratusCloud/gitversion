@@ -7,11 +7,7 @@ branches:
     prevent-increment-of-merged-branch-version: true
     track-merge-target: false
     source-branches: 
-    - develop
-    - main
-    - release
     - feature
-    - support
     - hotfix
     tracks-release-branches: false
     is-release-branch: true
