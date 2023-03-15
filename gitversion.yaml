@@ -3,7 +3,7 @@ branches:
     regex: ^xtratus$
     mode: ContinuousDelivery
     tag: ''
-    increment: Minor
+    increment: None
     prevent-increment-of-merged-branch-version: true
     track-merge-target: false
     source-branches: []
@@ -12,7 +12,7 @@ branches:
     is-mainline: true
     pre-release-weight: 55000
   feature:
-    regex: ^feature?[/-]
+    regex: ^feature(s)?[/-]
     source-branches: 
       - xtratus
     tag: {BranchName}
