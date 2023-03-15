@@ -13,15 +13,13 @@ branches:
     pre-release-weight: 55000
   feature:
     regex: ^feature(s)?[/-]
-    source-branches: 
-      - xtratus
-    tag: {BranchName}
+    source-branches: []
+    tag: '{BranchName}'
     increment: Minor
   fix:
     regex: bugfix(es)?[/-]
-    source-branches:
-      - xtratus
-    tag: {BranchName}
+    source-branches: []
+    tag: '{BranchName}'
     increment: Patch
 ignore:
   sha: []
