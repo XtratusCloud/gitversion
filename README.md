@@ -1,1 +1,2 @@
 # gitversion
+dummy
