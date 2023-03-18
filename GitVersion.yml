@@ -12,15 +12,24 @@ branches:
     is-mainline: true
     pre-release-weight: 55000
   feature:
+    mode: ContinuousDelivery
     regex: ^feature(s)?[/-]
-    source-branches: []
     tag: '{BranchName}'
-    increment: Minor
-  fix:
-    regex: bugfix(es)?[/-]
+    increment: Minor    
     source-branches: []
+    pre-release-weight: 30000  
+  hotfix:
+    mode: ContinuousDelivery
+    regex: ^hotfix(es)?[/-]
     tag: '{BranchName}'
     increment: Patch
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: false    
+    source-branches: []
+    tracks-release-branches: false
+    is-release-branch: false
+    is-mainline: false
+    pre-release-weight: 30000
 ignore:
   sha: []
 merge-message-formats: {}
