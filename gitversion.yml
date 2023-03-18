@@ -1,22 +1,33 @@
-mode: MainLine # Only add this if you want every version to be created automatically on your main branch.
-major-version-bump-message: "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\\([\\w\\s-]*\\))?(!:|:.*\\n\\n((.+\\n)+\\n)?BREAKING CHANGE:\\s.+)"
-minor-version-bump-message: "^(feat)(\\([\\w\\s-]*\\))?:"
-patch-version-bump-message: "^(build|chore|ci|docs|fix|perf|refactor|revert|style|test)(\\([\\w\\s-]*\\))?:"
+# mode: MainLine # Only add this if you want every version to be created automatically on your main branch.
+# major-version-bump-message: "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\\([\\w\\s-]*\\))?(!:|:.*\\n\\n((.+\\n)+\\n)?BREAKING CHANGE:\\s.+)"
+# minor-version-bump-message: "^(feat)(\\([\\w\\s-]*\\))?"
+# patch-version-bump-message: "^(build|chore|ci|docs|fix|perf|refactor|revert|style|test)(\\([\\w\\s-]*\\))?"
 continuous-delivery-fallback-tag: ''
 branches:
+  main:
+    mode: ContinuousDeployment
+    tag: ''
+    increment: None
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    regex: ^master$|^main$
+    source-branches: []
+    tracks-release-branches: false
+    is-release-branch: false
+    is-mainline: false
+    pre-release-weight: 55000
   xtratus:
     regex: ^xtratus$
     mode: ContinuousDeployment
     tag: ''
     increment: Inherit
     prevent-increment-of-merged-branch-version: false
-    track-merge-target: true
-    source-branches:
-      - feature
-      - hotfix
-    tracks-release-branches: true
-    is-release-branch: true
-    is-mainline: true
+    tag-number-pattern: '[/-](?<number>\d+)[-/]'
+    track-merge-target: false
+    source-branches: [ 'develop', 'main', 'release', 'feature', 'support', 'hotfix' ]
+    tracks-release-branches: false
+    is-release-branch: false
+    is-mainline: false
     pre-release-weight: 55000
   feature:
     mode: ContinuousDelivery
@@ -29,7 +40,7 @@ branches:
     # tracks-release-branches: false
     # is-release-branch: false
     # is-mainline: false
-    pre-release-weight: 30000  
+    pre-release-weight: 30000
   hotfix:
     mode: ContinuousDelivery
     regex: ^hotfix(es)?[/-]
