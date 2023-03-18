@@ -5,18 +5,23 @@ branches:
     tag: ''
     increment: Inherit
     prevent-increment-of-merged-branch-version: true
-    track-merge-target: false
+    track-merge-target: true
     source-branches: []
-    tracks-release-branches: false
+    # tracks-release-branches: true
     is-release-branch: true
-    is-mainline: true
+    # is-mainline: true
     pre-release-weight: 55000
   feature:
     mode: ContinuousDelivery
     regex: ^feature(s)?[/-]
     tag: '{BranchName}'
-    increment: Minor    
+    increment: Minor
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: false
     source-branches: []
+    # tracks-release-branches: false
+    # is-release-branch: false
+    # is-mainline: false
     pre-release-weight: 30000  
   hotfix:
     mode: ContinuousDelivery
@@ -26,9 +31,9 @@ branches:
     prevent-increment-of-merged-branch-version: false
     track-merge-target: false    
     source-branches: []
-    tracks-release-branches: false
-    is-release-branch: false
-    is-mainline: false
+    # tracks-release-branches: false
+    # is-release-branch: false
+    # is-mainline: false
     pre-release-weight: 30000
 ignore:
   sha: []
