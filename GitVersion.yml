@@ -1,0 +1,29 @@
+continuous-delivery-fallback-tag: ''
+branches:
+  main:
+    is-mainline: false
+  xtratus:
+    regex: ^xtratus$
+    mode: ContinuousDeployment
+    tag: ''
+    increment: None
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    source-branches: []
+    tracks-release-branches: false
+    is-release-branch: true
+    is-mainline: true
+    pre-release-weight: 55000
+  feature:
+    mode: ContinuousDelivery
+    regex: ^feature(s)?[/-]
+    tag: '{BranchName}.{env:BUILD_NUMBER ?? 0}'
+    increment: Minor
+  hotfix:
+    mode: ContinuousDelivery
+    regex: ^hotfix(es)?[/-]
+    tag: '{BranchName}'
+    increment: Patch
+ignore:
+  sha: []
+merge-message-formats: {}
