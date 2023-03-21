@@ -4,7 +4,7 @@
 # patch-version-bump-message: "^(build|chore|ci|docs|fix|perf|refactor|revert|style|test)(\\([\\w\\s-]*\\))?"
 #continuous-delivery-fallback-tag: ''
 branches:
-  # main:
+  main:
   #   mode: ContinuousDeployment
   #   tag: ''
   #   increment: None
@@ -14,7 +14,7 @@ branches:
   #   source-branches: []
   #   tracks-release-branches: false
   #   is-release-branch: false
-  #   is-mainline: false
+    is-mainline: false
   #   pre-release-weight: 55000
   xtratus:
     regex: ^xtratus$
@@ -22,7 +22,7 @@ branches:
     tag: ''
     increment: None
     prevent-increment-of-merged-branch-version: true
-    tag-number-pattern: '[/-](?<number>\d+)[-/]'
+    # tag-number-pattern: '[/-](?<number>\d+)[-/]'
     track-merge-target: false
     source-branches: []
     tracks-release-branches: false
@@ -32,7 +32,7 @@ branches:
   feature:
     mode: ContinuousDelivery
     regex: ^feature(s)?[/-]
-    tag: '{BranchName}'
+    tag: '{BranchName}.{env:BUILD_NUMBER ?? 0}'
     increment: Minor
     # prevent-increment-of-merged-branch-version: false
     # track-merge-target: false
