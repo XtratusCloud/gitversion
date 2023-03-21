@@ -1,28 +1,13 @@
-# mode: MainLine # Only add this if you want every version to be created automatically on your main branch.
-# major-version-bump-message: "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\\([\\w\\s-]*\\))?(!:|:.*\\n\\n((.+\\n)+\\n)?BREAKING CHANGE:\\s.+)"
-# minor-version-bump-message: "^(feat)(\\([\\w\\s-]*\\))?"
-# patch-version-bump-message: "^(build|chore|ci|docs|fix|perf|refactor|revert|style|test)(\\([\\w\\s-]*\\))?"
-#continuous-delivery-fallback-tag: ''
+continuous-delivery-fallback-tag: ''
 branches:
   main:
-  #   mode: ContinuousDeployment
-  #   tag: ''
-  #   increment: None
-  #   prevent-increment-of-merged-branch-version: true
-  #   track-merge-target: false
-  #   regex: ^master$|^main$
-  #   source-branches: []
-  #   tracks-release-branches: false
-  #   is-release-branch: false
     is-mainline: false
-  #   pre-release-weight: 55000
   xtratus:
     regex: ^xtratus$
     mode: ContinuousDeployment
     tag: ''
     increment: None
     prevent-increment-of-merged-branch-version: true
-    # tag-number-pattern: '[/-](?<number>\d+)[-/]'
     track-merge-target: false
     source-branches: []
     tracks-release-branches: false
@@ -34,25 +19,11 @@ branches:
     regex: ^feature(s)?[/-]
     tag: '{BranchName}.{env:BUILD_NUMBER ?? 0}'
     increment: Minor
-    # prevent-increment-of-merged-branch-version: false
-    # track-merge-target: false
-    # source-branches: []
-    # tracks-release-branches: false
-    # is-release-branch: false
-    # is-mainline: false
-    # pre-release-weight: 30000
   hotfix:
     mode: ContinuousDelivery
     regex: ^hotfix(es)?[/-]
     tag: '{BranchName}'
     increment: Patch
-    # prevent-increment-of-merged-branch-version: false
-    # track-merge-target: false    
-    # source-branches: []
-    # tracks-release-branches: false
-    # is-release-branch: false
-    # is-mainline: false
-    # pre-release-weight: 30000
 ignore:
   sha: []
 merge-message-formats: {}
