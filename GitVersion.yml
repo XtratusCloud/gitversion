@@ -17,7 +17,7 @@ branches:
   feature:
     mode: ContinuousDelivery
     regex: ^feature(s)?[/-]
-    tag: '{BranchName}.{env:BUILD_NUMBER ?? 0}'
+    tag: '{BranchName}'
     increment: Minor
   hotfix:
     mode: ContinuousDelivery
